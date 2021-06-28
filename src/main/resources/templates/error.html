@@ -2,24 +2,16 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: headFragment(~{::title}, ~{::link})">
-
   <title>Error</title>
-
-  <link rel="stylesheet" href="css/errorPage.css?v=1.0">
-
+  <link rel="stylesheet" href="css/errorPage.css">
 </head>
 
 <body>
-<!-- your content here... -->
 <div class="error-container">
-  <h1 id="error-code" th:text="${statusCode}">Status Code</h1>
+  <h1 id="error-code" >Status Code</h1>
   <img src="/images/error_car.png" >
-  <h2 id="error-msg" th:text="${statusMessage}">Status Code</h2>
+  <h2 id="error-msg">Status Code</h2>
 </div>
-
-<script src="js/scripts.js"></script>
-
-
 
 </body>
 </html>

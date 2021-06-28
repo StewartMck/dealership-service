@@ -1,0 +1,4 @@
+<thlogic xmlns:th="http://www.thymeleaf.org">
+    <attr sel="#error-code" th:text="${statusCode}"/>
+    <attr sel="#error-msg" th:text="${statusMessage}"/>
+</thlogic>
