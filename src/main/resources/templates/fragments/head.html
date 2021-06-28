@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headFragment(pageTitle, links)">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title th:replace="${pageTitle}">Service Department</title>
+
+
+  <meta name="description" content="A CRM for use in a Service Department of a Car Dealership.">
+  <meta name="Stewart McKinlay" content="SitePoint">
+  <meta property="og:title" content="Service Department">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.smckinlay.ca/service/">
+  <meta property="og:description" content="A CRM for use in a Service Department of a Car Dealership.">
+  <meta property="og:image" content="image.png">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- placeholder for additional links -->
+  <th:block th:replace="${links}" />
+
+</head>
+
+</html>
