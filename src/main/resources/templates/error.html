@@ -19,14 +19,18 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <link rel="stylesheet" href="css/errorPage.css?v=1.0">
 
 </head>
 
 <body>
 <!-- your content here... -->
-<h1 th:text="${statusCode}">Status Code</h1>
-<h2 th:text="${statusMessage}">Status Code</h2>
+<div class="error-container">
+  <h1 id="error-code" th:text="${statusCode}">Status Code</h1>
+  <img src="/images/error_car.png" >
+  <h2 id="error-msg" th:text="${statusMessage}">Status Code</h2>
+</div>
+
 <script src="js/scripts.js"></script>
 </body>
 </html>

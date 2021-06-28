@@ -1,0 +1,19 @@
+body {
+  background-color: black;
+}
+
+.error-container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    color: red;
+    align-items: center;
+}
+
+img {
+    height: auto;
+    width: 500px;
+}
