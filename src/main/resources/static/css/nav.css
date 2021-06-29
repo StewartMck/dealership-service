@@ -10,6 +10,28 @@ nav {
 }
 
 .session {
-display: flex;
-align-items: baseline;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.links {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.links a {
+    width: 5em;
+    background-color: grey;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+#logout {
+    background-color: red;
+    border-radius: 10px;
+    padding: 5px;
+
 }

@@ -1,0 +1,28 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: headFragment(~{::title}, ~{::link})">
+  <title>Service</title>
+  <link rel="stylesheet" href="css/service.css">
+  <link rel="stylesheet" href="css/nav.css">
+</head>
+
+<body>
+<nav th:replace="fragments/nav :: navbar"/>
+
+<div class="service-container">
+  <table class="vehicles">
+    <tr>
+      <th>Registration</th>
+      <th>Model</th>
+      <th>Customer Name</th>
+      <th>Status</th>
+      <th>Edit</th>
+    </tr>
+    <tr></tr>
+  </table>
+</div>
+
+<script src="js/scripts.js"></script>
+</body>
+</html>
