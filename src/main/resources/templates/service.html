@@ -1,14 +1,14 @@
 <!doctype html>
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: headFragment(~{::title}, ~{::link})">
+<head>
   <title>Service</title>
   <link rel="stylesheet" href="css/service.css">
   <link rel="stylesheet" href="css/nav.css">
 </head>
 
 <body>
-<nav th:replace="fragments/nav :: navbar"/>
+<nav/>
 
 <div class="service-container">
   <table class="vehicles">
@@ -19,7 +19,15 @@
       <th>Status</th>
       <th>Edit</th>
     </tr>
-    <tr></tr>
+    <tr id="service-data" >
+      <td id="vehicle-reg">Registration</td>
+      <td id="vehicle-model">Model</td>
+      <td id="vehicle-customer">Customer Name</td>
+      <td id="vehicle-status">Status</td>
+      <td id="vehicle-edit">
+        <a id="vehicle-edit-button" href="/">Edit</a>
+      </td>
+    </tr>
   </table>
 </div>
 

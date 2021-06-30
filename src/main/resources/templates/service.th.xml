@@ -1,0 +1,12 @@
+<thlogic xmlns:th="http://www.thymeleaf.org">
+    <attr sel="head" th:replace="fragments/head :: headFragment(~{::title}, ~{::link})"/>
+    <attr sel="nav" th:replace="fragments/nav :: navbar"/>
+    <attr sel="#service-data" th:each="vehicle : ${vehicles}">
+        <attr sel="#vehicle-reg" th:text="${vehicle.registration}"/>
+        <attr sel="#vehicle-model" th:text="${vehicle.model}"/>
+        <attr sel="#vehicle-customer" th:text="${vehicle.customer}"/>
+        <attr sel="#vehicle-status" th:text="${vehicle.status}"/>
+        <attr sel="#vehicle-edit-button" th:text="EDIT"/>
+    </attr>
+
+</thlogic>
