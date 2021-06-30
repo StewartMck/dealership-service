@@ -12,24 +12,45 @@
 
 <div class="service-container">
   <table class="vehicles">
-    <tr>
-      <th>Registration</th>
-      <th>Model</th>
-      <th>Customer Name</th>
-      <th>Status</th>
-      <th>Edit</th>
-    </tr>
-    <tr id="service-data" >
-      <td id="vehicle-reg">Registration</td>
-      <td id="vehicle-model">Model</td>
-      <td id="vehicle-customer">Customer Name</td>
-      <td id="vehicle-status">Status</td>
-      <td id="vehicle-edit">
-        <a id="vehicle-edit-button" href="/">Edit</a>
-      </td>
-    </tr>
+    <thead>
+      <tr>
+        <th>Registration</th>
+        <th>Model</th>
+        <th>Customer Name</th>
+        <th>Status</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="service-data" >
+        <td id="vehicle-reg">Registration</td>
+        <td id="vehicle-model">Model</td>
+        <td id="vehicle-customer">Customer Name</td>
+        <td id="vehicle-status">Status</td>
+        <td id="vehicle-edit">
+          <a id="vehicle-edit-button" href="/">Edit</a>
+        </td>
+      </tr>
+    </tbody>
   </table>
+  <div class="edit-container">
+    <section class="buttons">
+      <button type="submit">NEW</button>
+      <button type="submit">EDIT</button>
+    </section>
+    <section class="data">
+      <label for="reg">Registration</label>
+      <input id="reg" name="reg" type="text">
+      <label for="model">Model</label>
+      <input id="model" type="text" name="model"/>
+      <label for="customer">Customer Name</label>
+      <input id="customer" name="customer" type="text">
+      <label for="details">Details</label>
+      <textarea id="details" name="details"></textarea>
+    </section>
+  </div>
 </div>
+
 
 <script src="js/scripts.js"></script>
 </body>
