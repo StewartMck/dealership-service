@@ -18,18 +18,16 @@
         <th>Model</th>
         <th>Customer Name</th>
         <th>Status</th>
-        <th>Edit</th>
+        <th>Advisor</th>
       </tr>
     </thead>
     <tbody>
       <tr id="service-data" >
-        <td id="vehicle-reg">Registration</td>
+        <td id="vehicle-reg"><a id="vehicle-reg-href" href=""  >Registration</a></td>
         <td id="vehicle-model">Model</td>
         <td id="vehicle-customer">Customer Name</td>
         <td id="vehicle-status">Status</td>
-        <td id="vehicle-edit">
-          <a id="vehicle-edit-button" href="/">Edit</a>
-        </td>
+        <td id="service-advisor">Advisor Name</td>
       </tr>
     </tbody>
   </table>
@@ -45,8 +43,17 @@
       <input id="model" type="text" name="model"/>
       <label for="customer">Customer Name</label>
       <input id="customer" name="customer" type="text">
-      <label for="details">Details</label>
-      <textarea id="details" name="details"></textarea>
+      <label for="concerns">Customer Concerns</label>
+      <textarea id="concerns" name="concerns"></textarea>
+      <label for="workshop">Workshop Notes</label>
+      <textarea id="workshop" name="workshop"></textarea>
+      <label for="status">Status</label>
+      <select name="status", id="status">
+        <option th:each="message : ${statusMessageList}"
+                th:value="${message}" th:text="${message}"
+                th:selected="${message}==(${service} ? ${service.status} : 'QUEUE')"
+        />
+      </select>
     </section>
   </div>
 </div>

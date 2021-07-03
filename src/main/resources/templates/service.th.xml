@@ -2,11 +2,19 @@
     <attr sel="head" th:replace="fragments/head :: headFragment(~{::title}, ~{::link})"/>
     <attr sel="nav" th:replace="fragments/nav :: navbar"/>
     <attr sel="#service-data" th:each="vehicle : ${vehicles}">
-        <attr sel="#vehicle-reg" th:text="${vehicle.registration}"/>
+        <attr sel="#vehicle-reg-href" th:text="${vehicle.registration}" th:href="@{/service?id=__${vehicle.registration}__}"/>
         <attr sel="#vehicle-model" th:text="${vehicle.model}"/>
         <attr sel="#vehicle-customer" th:text="${vehicle.customer}"/>
         <attr sel="#vehicle-status" th:text="${vehicle.status}"/>
-        <attr sel="#vehicle-edit-button" th:text="EDIT"/>
+        <attr sel="#service-advisor" th:text="Amanda"/>
     </attr>
+    <attr sel="#reg" th:value="(${service} ? ${service.registration} : '')"/>
+    <attr sel="#model" th:value="(${service} ? ${service.model} : '')"/>
+    <attr sel="#customer" th:value="(${service} ? ${service.customer} : '')"/>
+    <attr sel="#concerns" th:text="(${service} ? ${service.concerns} : '')"/>
+    <attr sel="#workshop" th:text="(${service} ? ${service.workshop} : '')"/>
+<!--    <attr sel="#status">-->
+<!--        <option th:each="message : ${statusMessageList}" th:selected="${service.status}==${message}"></option>-->
+<!--    </attr>-->
 
 </thlogic>

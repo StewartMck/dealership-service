@@ -50,6 +50,6 @@ body {
     line-height: 2em;
 }
 
-.data #details {
-    height: 15em;
+#concerns, #workshop  {
+    height: 9em;
 }
