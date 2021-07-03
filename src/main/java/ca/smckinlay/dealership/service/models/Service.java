@@ -2,10 +2,12 @@ package ca.smckinlay.dealership.service.models;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Service {
 
@@ -30,11 +32,22 @@ public class Service {
         log.info("BOOKINGS:, {}", bookings);
     }
 
+    public static List<Service> getDate() {
+        return bookings;
+    }
+
+
+    public static void addService(Service service) {
+        bookings.add(service);
+        log.info("Service added from POST");
+        log.info("Bookings {}", bookings);
+    }
+
     public static Service getService(String id) {
         log.info("ID FOR getService, {}", id);
         for(Service service : bookings) {
             if(service.getRegistration().equals(id)) {
-                log.info("SERVICE. {}", service);
+                log.info("SERVICE FOUND: {}", service);
                 return service;
             }
         }
