@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 
 public class Service {
@@ -28,7 +30,7 @@ public class Service {
         this.concerns = concerns;
         this.workshop = workshop;
         this.status = status;
-        bookings.add(this);
+//        bookings.add(this);
         log.info("BOOKINGS:, {}", bookings);
     }
 
@@ -52,6 +54,18 @@ public class Service {
             }
         }
         return null;
+    }
+
+    public static void updateService(Service service) {
+        ListIterator<Service> serviceIterator = bookings.listIterator();
+        while(serviceIterator.hasNext()) {
+            Service item = serviceIterator.next();
+            if(item.equals(service)) {
+                log.info("SERVICE UPDATED");
+                serviceIterator.set(service);
+                break;
+            }
+        }
     }
 
     public String getRegistration() {
@@ -100,6 +114,21 @@ public class Service {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Service)) return false;
+
+        Service service = (Service) o;
+
+        return registration.equals(service.registration);
+    }
+
+    @Override
+    public int hashCode() {
+        return registration.hashCode();
     }
 
     @Override

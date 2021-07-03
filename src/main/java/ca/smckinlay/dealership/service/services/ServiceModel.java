@@ -5,5 +5,6 @@ import ca.smckinlay.dealership.service.models.Service;
 public interface ServiceModel {
 
     Service getService();
+    void updateService(Service service);
 
 }
