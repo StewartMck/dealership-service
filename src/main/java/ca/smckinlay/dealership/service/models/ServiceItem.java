@@ -16,10 +16,11 @@ public class ServiceItem {
     private static final List<ServiceItem> bookings = new ArrayList<>();
     public static final Logger log = LoggerFactory.getLogger(ServiceItem.class);
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private long id;
 
+    @Id
     @NotBlank(message = "Registration is mandatory")
     @Column(name = "REGISTRATION")
     private String registration;
@@ -57,18 +58,7 @@ public class ServiceItem {
         log.info("Service added from POST");
         log.info("Bookings {}", bookings);
     }
-
-    public static ServiceItem getService(String id) {
-        log.info("ID FOR getService, {}", id);
-        for(ServiceItem service : bookings) {
-            if(service.getRegistration().equals(id)) {
-                log.info("SERVICE FOUND: {}", service);
-                return service;
-            }
-        }
-        return null;
-    }
-
+    
     public static void updateService(ServiceItem service) {
         ListIterator<ServiceItem> serviceIterator = bookings.listIterator();
         while(serviceIterator.hasNext()) {
