@@ -5,19 +5,33 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-
+@Entity
 public class Service {
 
     private static final List<Service> bookings = new ArrayList<>();
     public static final Logger log = LoggerFactory.getLogger(Service.class);
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @NotBlank(message = "Registration is mandatory")
     private String registration;
+
+    @NotBlank(message = "Model is mandatory")
     private String model;
+
+    @NotBlank(message = "Customer is mandatory")
     private String customer;
     private String concerns;
     private String workshop;
