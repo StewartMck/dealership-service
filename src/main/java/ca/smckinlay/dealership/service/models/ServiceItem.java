@@ -2,66 +2,65 @@ package ca.smckinlay.dealership.service.models;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
-import javax.annotation.PostConstruct;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
 @Entity
-public class Service {
+@Table(name = "SERVICE")
+public class ServiceItem {
 
-    private static final List<Service> bookings = new ArrayList<>();
-    public static final Logger log = LoggerFactory.getLogger(Service.class);
+    private static final List<ServiceItem> bookings = new ArrayList<>();
+    public static final Logger log = LoggerFactory.getLogger(ServiceItem.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @NotBlank(message = "Registration is mandatory")
+    @Column(name = "REGISTRATION")
     private String registration;
 
     @NotBlank(message = "Model is mandatory")
+    @Column(name = "MODEL")
     private String model;
 
     @NotBlank(message = "Customer is mandatory")
+    @Column(name = "CUSTOMER")
     private String customer;
+    @Column(name = "CONCERNS")
     private String concerns;
+    @Column(name = "WORKSHOP")
     private String workshop;
+    @Column(name = "STATUS")
+    @Enumerated(EnumType.STRING)
     private Status status;
 
-    public Service(String registration, String model, String customer, String concerns, String workshop, Status status) {
+    public ServiceItem() {
+    }
+
+    public ServiceItem(String registration, String model, String customer, String concerns, String workshop, Status status) {
         this.registration = registration;
         this.model = model;
         this.customer = customer;
         this.concerns = concerns;
         this.workshop = workshop;
         this.status = status;
-//        bookings.add(this);
-        log.info("BOOKINGS:, {}", bookings);
+        log.info("NEW ITEM:, {}", this);
     }
 
-    public static List<Service> getDate() {
-        return bookings;
-    }
-
-
-    public static void addService(Service service) {
+    public static void addService(ServiceItem service) {
         bookings.add(service);
         log.info("Service added from POST");
         log.info("Bookings {}", bookings);
     }
 
-    public static Service getService(String id) {
+    public static ServiceItem getService(String id) {
         log.info("ID FOR getService, {}", id);
-        for(Service service : bookings) {
+        for(ServiceItem service : bookings) {
             if(service.getRegistration().equals(id)) {
                 log.info("SERVICE FOUND: {}", service);
                 return service;
@@ -70,10 +69,10 @@ public class Service {
         return null;
     }
 
-    public static void updateService(Service service) {
-        ListIterator<Service> serviceIterator = bookings.listIterator();
+    public static void updateService(ServiceItem service) {
+        ListIterator<ServiceItem> serviceIterator = bookings.listIterator();
         while(serviceIterator.hasNext()) {
-            Service item = serviceIterator.next();
+            ServiceItem item = serviceIterator.next();
             if(item.equals(service)) {
                 log.info("SERVICE UPDATED");
                 serviceIterator.set(service);
@@ -133,9 +132,9 @@ public class Service {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Service)) return false;
+        if (!(o instanceof ServiceItem)) return false;
 
-        Service service = (Service) o;
+        ServiceItem service = (ServiceItem) o;
 
         return registration.equals(service.registration);
     }
