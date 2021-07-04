@@ -2,23 +2,14 @@ package ca.smckinlay.dealership.service.models;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
 
 @Entity
 @Table(name = "SERVICE")
 public class ServiceItem {
 
-    private static final List<ServiceItem> bookings = new ArrayList<>();
     public static final Logger log = LoggerFactory.getLogger(ServiceItem.class);
-
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private long id;
 
     @Id
     @NotBlank(message = "Registration is mandatory")
@@ -51,24 +42,6 @@ public class ServiceItem {
         this.workshop = workshop;
         this.status = status;
         log.info("NEW ITEM:, {}", this);
-    }
-
-    public static void addService(ServiceItem service) {
-        bookings.add(service);
-        log.info("Service added from POST");
-        log.info("Bookings {}", bookings);
-    }
-
-    public static void updateService(ServiceItem service) {
-        ListIterator<ServiceItem> serviceIterator = bookings.listIterator();
-        while(serviceIterator.hasNext()) {
-            ServiceItem item = serviceIterator.next();
-            if(item.equals(service)) {
-                log.info("SERVICE UPDATED");
-                serviceIterator.set(service);
-                break;
-            }
-        }
     }
 
     public String getRegistration() {

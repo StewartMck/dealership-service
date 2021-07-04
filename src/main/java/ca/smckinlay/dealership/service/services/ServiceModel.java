@@ -22,20 +22,17 @@ public class ServiceModel {
     }
 
     public List<ServiceItem> getAllServices(){
-        log.info("GET_ALL_SERVICES {}", serviceItemRepo.findAll());
         return serviceItemRepo.findAll();
     }
 
     public ServiceItem getService(String id) {
+        log.info("ID {}", id);
+        log.info("GET_SERVICE {}", serviceItemRepo.getById(id));
         return serviceItemRepo.getById(id);
     }
 
-    public void addService(ServiceItem serviceItem){
+    public void addUpdateService(ServiceItem serviceItem){
         serviceItemRepo.save(serviceItem);
-    }
-
-    public boolean checkService(String id){
-        return serviceItemRepo.existsById(id);
     }
 
 }
