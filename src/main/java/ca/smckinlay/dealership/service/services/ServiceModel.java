@@ -30,4 +30,12 @@ public class ServiceModel {
         return serviceItemRepo.getById(id);
     }
 
+    public void addService(ServiceItem serviceItem){
+        serviceItemRepo.save(serviceItem);
+    }
+
+    public boolean checkService(String id){
+        return serviceItemRepo.existsById(id);
+    }
+
 }

@@ -51,12 +51,12 @@ public class ServiceController {
     public String newEditService(@ModelAttribute("service") ServiceItem service, RedirectAttributes redirectAttributes) {
         String id = service.getRegistration();
         log.info("POST executed");
-        if(ServiceItem.getService(id) != null){
+        if(serviceModel.checkService(id)){
             log.info("The service exists and will be updated");
             ServiceItem.updateService(service);
         } else {
             log.info("The service is new and will be created");
-            ServiceItem.addService(service);
+            serviceModel.addService(service);
         }
 
         redirectAttributes.addFlashAttribute("service", service);

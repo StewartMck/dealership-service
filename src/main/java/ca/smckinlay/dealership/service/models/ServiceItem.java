@@ -58,7 +58,7 @@ public class ServiceItem {
         log.info("Service added from POST");
         log.info("Bookings {}", bookings);
     }
-    
+
     public static void updateService(ServiceItem service) {
         ListIterator<ServiceItem> serviceIterator = bookings.listIterator();
         while(serviceIterator.hasNext()) {
