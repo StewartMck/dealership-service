@@ -3,6 +3,7 @@ package ca.smckinlay.dealership.service.controllers;
 import ca.smckinlay.dealership.service.models.ServiceItem;
 import ca.smckinlay.dealership.service.models.Status;
 import ca.smckinlay.dealership.service.services.ServiceModel;
+import ca.smckinlay.dealership.service.util.AttributeNames;
 import ca.smckinlay.dealership.service.util.Mappings;
 import ca.smckinlay.dealership.service.util.Views;
 import org.slf4j.Logger;
@@ -31,23 +32,23 @@ public class ServiceController {
 
     @GetMapping()
     public String service(Model model) {
-        model.addAttribute("vehicles", serviceModel.getAllServices());
-        model.addAttribute("statusMessageList", statusMessageList);
+        model.addAttribute(AttributeNames.BOOKINGS, serviceModel.getAllBookings());
+        model.addAttribute(AttributeNames.STATUS_MESSAGE, statusMessageList);
         return Views.SERVICE;
     }
 
     @GetMapping(Mappings.SERVICE_ITEM)
     public String serviceItem(@RequestParam String id, Model model, RedirectAttributes redirectAttributes) {
-        ServiceItem service = serviceModel.getService(id);
-        redirectAttributes.addFlashAttribute("service", service);
+        ServiceItem service = serviceModel.getBooking(id);
+        redirectAttributes.addFlashAttribute(AttributeNames.BOOKING, service);
         return Mappings.REDIRECT_SERVICES;
     }
 
     @PostMapping(Mappings.NEW_SERVICE)
     public String newEditService(@Valid @ModelAttribute("service") ServiceItem service, RedirectAttributes redirectAttributes) throws Exception {
    
-            serviceModel.addUpdateService(service);
-            redirectAttributes.addFlashAttribute("service", service);
+            serviceModel.addUpdateBooking(service);
+            redirectAttributes.addFlashAttribute(AttributeNames.BOOKING, service);
             return Mappings.REDIRECT_SERVICES;
 
     }

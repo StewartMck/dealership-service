@@ -21,17 +21,16 @@ public class ServiceModel {
         this.serviceItemRepo = serviceItemRepo;
     }
 
-    public List<ServiceItem> getAllServices(){
+    public List<ServiceItem> getAllBookings(){
         return serviceItemRepo.findAll();
     }
 
-    public ServiceItem getService(String id) {
-        log.info("ID {}", id);
+    public ServiceItem getBooking(String id) {
         log.info("GET_SERVICE {}", serviceItemRepo.getById(id));
         return serviceItemRepo.getById(id);
     }
 
-    public void addUpdateService(ServiceItem serviceItem){
+    public void addUpdateBooking(ServiceItem serviceItem){
         serviceItemRepo.save(serviceItem);
     }
 

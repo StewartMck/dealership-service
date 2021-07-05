@@ -52,7 +52,7 @@
       <select name="status", id="status">
         <option th:each="message : ${statusMessageList}"
                 th:value="${message}" th:text="${message}"
-                th:selected="${message}==(${service} ? ${service.status} : 'QUEUE')"
+                th:selected="${message}==(${booking} ? ${booking.status} : 'QUEUE')"
         />
       </select>
     </section>

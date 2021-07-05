@@ -1,18 +1,18 @@
 <thlogic xmlns:th="http://www.thymeleaf.org">
     <attr sel="head" th:replace="fragments/head :: headFragment(~{::title}, ~{::link})"/>
     <attr sel="nav" th:replace="fragments/nav :: navbar"/>
-    <attr sel="#service-data" th:each="vehicle : ${vehicles}">
-        <attr sel="#vehicle-reg-href" th:text="${vehicle.registration}" th:href="@{/services/item?id=__${vehicle.registration}__}"/>
-        <attr sel="#vehicle-model" th:text="${vehicle.model}"/>
-        <attr sel="#vehicle-customer" th:text="${vehicle.customer}"/>
-        <attr sel="#vehicle-status" th:text="${vehicle.status}"/>
+    <attr sel="#service-data" th:each="booking : ${bookings}">
+        <attr sel="#vehicle-reg-href" th:text="${booking.registration}" th:href="@{/services/item?id=__${booking.registration}__}"/>
+        <attr sel="#vehicle-model" th:text="${booking.model}"/>
+        <attr sel="#vehicle-customer" th:text="${booking.customer}"/>
+        <attr sel="#vehicle-status" th:text="${booking.status}"/>
         <attr sel="#service-advisor" th:text="Amanda"/>
     </attr>
-    <attr sel="#registration" th:value="(${service} ? ${service.registration} : '')"/>
-    <attr sel="#model" th:value="(${service} ? ${service.model} : '')"/>
-    <attr sel="#customer" th:value="(${service} ? ${service.customer} : '')"/>
-    <attr sel="#concerns" th:text="(${service} ? ${service.concerns} : '')"/>
-    <attr sel="#workshop" th:text="(${service} ? ${service.workshop} : '')"/>
+    <attr sel="#registration" th:value="(${booking} ? ${booking.registration} : '')"/>
+    <attr sel="#model" th:value="(${booking} ? ${booking.model} : '')"/>
+    <attr sel="#customer" th:value="(${booking} ? ${booking.customer} : '')"/>
+    <attr sel="#concerns" th:text="(${booking} ? ${booking.concerns} : '')"/>
+    <attr sel="#workshop" th:text="(${booking} ? ${booking.workshop} : '')"/>
 <!--    <attr sel="#status">-->
 <!--        <option th:each="message : ${statusMessageList}" th:selected="${service.status}==${message}"></option>-->
 <!--    </attr>-->
