@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,10 +44,12 @@ public class ServiceController {
     }
 
     @PostMapping(Mappings.NEW_SERVICE)
-    public String newEditService(@ModelAttribute("service") ServiceItem service, RedirectAttributes redirectAttributes) {
-        serviceModel.addUpdateService(service);
-        redirectAttributes.addFlashAttribute("service", service);
-        return Mappings.REDIRECT_SERVICES;
+    public String newEditService(@Valid @ModelAttribute("service") ServiceItem service, RedirectAttributes redirectAttributes) throws Exception {
+   
+            serviceModel.addUpdateService(service);
+            redirectAttributes.addFlashAttribute("service", service);
+            return Mappings.REDIRECT_SERVICES;
+
     }
 
 }
