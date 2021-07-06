@@ -10,12 +10,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(Mappings.SERVICE)
@@ -45,12 +49,24 @@ public class ServiceController {
     }
 
     @PostMapping(Mappings.NEW_SERVICE)
-    public String newEditService(@Valid @ModelAttribute("service") ServiceItem service, RedirectAttributes redirectAttributes) throws Exception {
-   
+    public String newEditService(@Valid @ModelAttribute("service") ServiceItem service,BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        service.setDate();
+
+        if(bindingResult.hasErrors()) {
+            Map<String, String> errors = new HashMap<>();
+            bindingResult.getAllErrors().forEach((error) -> {
+                String fieldName = ((FieldError) error).getField();
+                String errorMessage = error.getDefaultMessage();
+                errors.put(fieldName, errorMessage);
+            });
+            redirectAttributes.addFlashAttribute(AttributeNames.VALIDATION_ERRORS, errors);
+            redirectAttributes.addFlashAttribute(AttributeNames.BOOKING, service);
+            return Mappings.REDIRECT_SERVICES;
+        }
+
             serviceModel.addUpdateBooking(service);
             redirectAttributes.addFlashAttribute(AttributeNames.BOOKING, service);
             return Mappings.REDIRECT_SERVICES;
-
     }
 
 }

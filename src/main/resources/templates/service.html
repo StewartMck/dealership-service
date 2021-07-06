@@ -33,21 +33,26 @@
   </table>
   <div class="edit-container">
     <form id="new" action="/services/new" method="post">
+
     <section class="buttons">
       <button type="submit">SUBMIT</button>
       <button id="clear" type="button">CLEAR</button>
     </section>
     <section class="data">
       <label for="registration">Registration</label>
-      <input id="registration" name="registration" type="text">
+      <label id="reg-error" class="validation-error" for="registration"/>
+      <input id="registration" name="registration" type="text" placeholder="Customer Vehicle Registration">
       <label for="model">Model</label>
-      <input id="model" type="text" name="model"/>
+      <label id="model-error" class="validation-error" for="model"/>
+      <input id="model" type="text" name="model" placeholder="Customer Vehicle Model"/>
       <label for="customer">Customer Name</label>
-      <input id="customer" name="customer" type="text">
+      <label id="customer-error" class="validation-error" for="customer"/>
+      <input id="customer" name="customer" type="text" placeholder="Customer Name">
       <label for="concerns">Customer Concerns</label>
-      <textarea id="concerns" name="concerns"></textarea>
+      <label id="concerns-error" class="validation-error" for="concerns"/>
+      <textarea id="concerns" name="concerns" placeholder="Customer Concerns"></textarea>
       <label for="workshop">Workshop Notes</label>
-      <textarea id="workshop" name="workshop"></textarea>
+      <textarea id="workshop" name="workshop" placeholder="Workshop Notes"></textarea>
       <label for="status">Status</label>
       <select name="status", id="status">
         <option th:each="message : ${statusMessageList}"
@@ -60,7 +65,7 @@
   </div>
 </div>
 
-
 <script src="js/service.js"></script>
+
 </body>
 </html>

@@ -34,7 +34,7 @@ public class CustomErrorController implements ErrorController {
         int statusCode = (Integer)request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
 
         model.addAttribute(AttributeNames.STATUS_CODE, statusCode);
-        model.addAttribute(AttributeNames.STATUS_MESSAGE,httpStatusErrorService.getHTTPStatusMsg(statusCode));
+        model.addAttribute(AttributeNames.HTTP_STATUS_ERROR,httpStatusErrorService.getHTTPStatusMsg(statusCode));
 
         log.error("THIS IS AN ERROR, {}", statusCode);
         return "error";

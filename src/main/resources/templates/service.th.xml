@@ -13,8 +13,10 @@
     <attr sel="#customer" th:value="(${booking} ? ${booking.customer} : '')"/>
     <attr sel="#concerns" th:text="(${booking} ? ${booking.concerns} : '')"/>
     <attr sel="#workshop" th:text="(${booking} ? ${booking.workshop} : '')"/>
-<!--    <attr sel="#status">-->
-<!--        <option th:each="message : ${statusMessageList}" th:selected="${service.status}==${message}"></option>-->
-<!--    </attr>-->
-
+    <attr sel=".data" th:object="${errors}">
+        <attr sel="#reg-error" th:if="${!#maps.isEmpty(errors)} and ${#maps.containsKey(errors, 'registration')}" th:text="*{registration}"/>
+        <attr sel="#model-error" th:if="${!#maps.isEmpty(errors)} and ${#maps.containsKey(errors, 'model')}" th:text="*{model}"/>
+        <attr sel="#customer-error" th:if="${!#maps.isEmpty(errors)} and ${#maps.containsKey(errors, 'customer')}" th:text="*{customer}"/>
+        <attr sel="#concerns-error" th:if="${!#maps.isEmpty(errors)} and ${#maps.containsKey(errors, 'concerns')}" th:text="*{concerns}"/>
+    </attr>
 </thlogic>

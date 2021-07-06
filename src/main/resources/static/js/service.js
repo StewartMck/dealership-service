@@ -6,6 +6,11 @@ document.getElementById("clear").addEventListener("click", ()=>{
        element.value="";
     })
 
+    const validationErrors = document.getElementsByClassName("validation-error");
+    for(const label of validationErrors) {
+        label.innerText="";
+    }
+
     const statusMessage = document.getElementById("status");
     statusMessage.value="QUEUE"
 
