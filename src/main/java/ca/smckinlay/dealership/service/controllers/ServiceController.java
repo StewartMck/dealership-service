@@ -53,6 +53,7 @@ public class ServiceController {
         service.setDate();
 
         if(bindingResult.hasErrors()) {
+            log.info("bindingResult {}", bindingResult);
             Map<String, String> errors = new HashMap<>();
             bindingResult.getAllErrors().forEach((error) -> {
                 String fieldName = ((FieldError) error).getField();
@@ -61,6 +62,7 @@ public class ServiceController {
             });
             redirectAttributes.addFlashAttribute(AttributeNames.VALIDATION_ERRORS, errors);
             redirectAttributes.addFlashAttribute(AttributeNames.BOOKING, service);
+
             return Mappings.REDIRECT_SERVICES;
         }
 

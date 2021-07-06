@@ -6,7 +6,12 @@ nav {
     top: 0;
     left: 0;
     justify-content: space-around;
-    align-items: baseline;
+    align-items: center;
+}
+
+img {
+    width: 100px;
+    height: auto;
 }
 
 .session {
