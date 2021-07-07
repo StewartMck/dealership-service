@@ -1,0 +1,22 @@
+<thlogic xmlns:th="http://www.thymeleaf.org">
+    <attr sel="head" th:replace="fragments/head :: headFragment(~{::title}, ~{::link})"/>
+    <attr sel="nav" th:replace="fragments/nav :: navbar"/>
+    <attr sel="#service-data" th:each="booking : ${bookings}">
+        <attr sel="#vehicle-reg-href" th:text="${booking.registration}" th:href="@{/service/item?id=__${booking.registration}__}"/>
+        <attr sel="#vehicle-model" th:text="${booking.model}"/>
+        <attr sel="#vehicle-customer" th:text="${booking.customer}"/>
+        <attr sel="#vehicle-status" th:text="${booking.status}" th:attr="color-id=${booking.status}"/>
+        <attr sel="#service-advisor" th:text="Amanda"/>
+    </attr>
+    <attr sel="#registration" th:value="(${booking} ? ${booking.registration} : '')"/>
+    <attr sel="#model" th:value="(${booking} ? ${booking.model} : '')"/>
+    <attr sel="#customer" th:value="(${booking} ? ${booking.customer} : '')"/>
+    <attr sel="#concerns" th:text="(${booking} ? ${booking.concerns} : '')"/>
+    <attr sel="#workshop" th:text="(${booking} ? ${booking.workshop} : '')"/>
+    <attr sel=".data" th:object="${errors}">
+        <attr sel="#reg-error" th:if="${!#maps.isEmpty(errors)} and ${#maps.containsKey(errors, 'registration')}" th:text="*{registration}"/>
+        <attr sel="#model-error" th:if="${!#maps.isEmpty(errors)} and ${#maps.containsKey(errors, 'model')}" th:text="*{model}"/>
+        <attr sel="#customer-error" th:if="${!#maps.isEmpty(errors)} and ${#maps.containsKey(errors, 'customer')}" th:text="*{customer}"/>
+        <attr sel="#concerns-error" th:if="${!#maps.isEmpty(errors)} and ${#maps.containsKey(errors, 'concerns')}" th:text="*{concerns}"/>
+    </attr>
+</thlogic>
