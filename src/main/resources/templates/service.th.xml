@@ -2,7 +2,7 @@
     <attr sel="head" th:replace="fragments/head :: headFragment(~{::title}, ~{::link})"/>
     <attr sel="nav" th:replace="fragments/nav :: navbar"/>
     <attr sel="#service-data" th:each="booking : ${bookings}">
-        <attr sel="#vehicle-reg-href" th:text="${booking.registration}" th:href="@{/services/item?id=__${booking.registration}__}"/>
+        <attr sel="#vehicle-reg-href" th:text="${booking.registration}" th:href="@{/service/item?id=__${booking.registration}__}"/>
         <attr sel="#vehicle-model" th:text="${booking.model}"/>
         <attr sel="#vehicle-customer" th:text="${booking.customer}"/>
         <attr sel="#vehicle-status" th:text="${booking.status}" th:attr="color-id=${booking.status}"/>
