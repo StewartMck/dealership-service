@@ -10,6 +10,8 @@ public final class Mappings {
     public static final String NEW_SERVICE = "new";
 
     public static final String WORKSHOP = "workshop";
+    public static final String WORKSHOP_ITEM = "item";
+    public static final String REDIRECT_WORKSHOP = "redirect:/" + WORKSHOP;
 
     public Mappings() {
     }
