@@ -8,13 +8,16 @@ import ca.smckinlay.dealership.service.util.Mappings;
 import ca.smckinlay.dealership.service.util.Views;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(Mappings.WORKSHOP)
@@ -41,5 +44,28 @@ public class WorkshopController {
         redirectAttributes.addFlashAttribute(AttributeNames.BOOKING, service);
         return Mappings.REDIRECT_WORKSHOP;
     }
+
+    @PostMapping(Mappings.NEW_WORKSHOP_ENTRY)
+    public String newEditWorkshop(@Valid @ModelAttribute("service") ServiceItem service, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        service.setDate();
+
+        if(bindingResult.hasErrors()) {
+            Map<String, String> errors = new HashMap<>();
+            bindingResult.getAllErrors().forEach((error) -> {
+                String fieldName = ((FieldError) error).getField();
+                String errorMessage = error.getDefaultMessage();
+                errors.put(fieldName, errorMessage);
+            });
+            redirectAttributes.addFlashAttribute(AttributeNames.VALIDATION_ERRORS, errors);
+            redirectAttributes.addFlashAttribute(AttributeNames.BOOKING, service);
+
+            return Mappings.REDIRECT_WORKSHOP;
+        }
+
+        serviceModel.addUpdateBooking(service);
+        redirectAttributes.addFlashAttribute(AttributeNames.BOOKING, service);
+        return Mappings.REDIRECT_WORKSHOP;
+    }
+
 
 }
