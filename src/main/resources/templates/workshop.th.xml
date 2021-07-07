@@ -8,7 +8,7 @@
         <attr sel="#vehicle-status" th:text="${booking.status}" th:attr="color-id=${booking.status}"/>
         <attr sel="#service-advisor" th:text="Amanda"/>
     </attr>
-    <attr sel="#registration" th:value="(${booking} ? ${booking.registration} : '')"/>
+    <attr sel="#registration" th:value="(${booking} ? ${booking.registration} : '')" />
     <attr sel="#model" th:value="(${booking} ? ${booking.model} : '')"/>
     <attr sel="#customer" th:value="(${booking} ? ${booking.customer} : '')"/>
     <attr sel="#concerns" th:text="(${booking} ? ${booking.concerns} : '')"/>

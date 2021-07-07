@@ -46,6 +46,12 @@ body {
     padding-right: 1em;
 }
 
+#expand {
+    color: red;
+    border: none;
+    background: transparent;
+}
+
 .buttons {
     margin-top: 1em;
     margin-bottom: 1em;

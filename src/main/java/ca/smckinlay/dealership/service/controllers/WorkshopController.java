@@ -26,10 +26,10 @@ public class WorkshopController {
     }
 
     @GetMapping()
-    public String service(Model model) {
+    public String workshop(Model model) {
         model.addAttribute(AttributeNames.BOOKINGS, serviceModel.getAllBookings());
         model.addAttribute(AttributeNames.STATUS_MESSAGE, statusMessageList);
-        return Views.SERVICE;
+        return Views.WORKSHOP;
     }
 
 }

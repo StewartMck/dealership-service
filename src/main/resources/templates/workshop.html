@@ -2,8 +2,8 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Service</title>
-  <link rel="stylesheet" href="css/service.css">
+  <title>Workshop</title>
+  <link rel="stylesheet" href="css/workshop.css">
   <link rel="stylesheet" href="css/nav.css">
 </head>
 
@@ -32,8 +32,8 @@
 <!--    </tbody>-->
   </table>
   <div class="edit-container">
+    <button id="expand" data_expanded="false"><</button>
     <form id="new" action="/service/new" method="post">
-
     <section class="buttons">
       <button type="submit">SUBMIT</button>
       <button id="clear" type="button">CLEAR</button>
@@ -41,16 +41,16 @@
     <section class="data">
       <label for="registration">Registration</label>
       <label id="reg-error" class="validation-error" for="registration"/>
-      <input id="registration" name="registration" type="text" placeholder="Customer Vehicle Registration">
+      <input id="registration" name="registration"  type="text" placeholder="Customer Vehicle Registration" readonly/>
       <label for="model">Model</label>
       <label id="model-error" class="validation-error" for="model"/>
-      <input id="model" type="text" name="model" placeholder="Customer Vehicle Model"/>
+      <input id="model" type="text" name="model" placeholder="Customer Vehicle Model" readonly/>
       <label for="customer">Customer Name</label>
       <label id="customer-error" class="validation-error" for="customer"/>
-      <input id="customer" name="customer" type="text" placeholder="Customer Name">
+      <input id="customer" name="customer" type="text" placeholder="Customer Name" readonly/>
       <label for="concerns">Customer Concerns</label>
       <label id="concerns-error" class="validation-error" for="concerns"/>
-      <textarea id="concerns" name="concerns" placeholder="Customer Concerns"></textarea>
+      <textarea id="concerns" name="concerns" placeholder="Customer Concerns" readonly ></textarea>
       <label for="workshop">Workshop Notes</label>
       <textarea id="workshop" name="workshop" placeholder="Workshop Notes"></textarea>
       <label for="status">Status</label>
@@ -65,7 +65,7 @@
   </div>
 </div>
 
-<script src="js/service.js"></script>
+<script src="js/workshop.js"></script>
 
 </body>
 </html>
