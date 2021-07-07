@@ -1,6 +1,6 @@
 nav {
     display: flex;
-    background-color: white;
+    background-color: #576574;
     width: 100%;
     position: fixed;
     top: 0;
@@ -28,10 +28,12 @@ img {
 
 .links a {
     width: 5em;
-    background-color: grey;
+    background-color: #640c0c;
+    color: white;
     border-radius: 10px;
     padding: 5px;
     text-align: center;
+    text-decoration: none;
 }
 
 #logout {

@@ -5,7 +5,7 @@
         <attr sel="#vehicle-reg-href" th:text="${booking.registration}" th:href="@{/services/item?id=__${booking.registration}__}"/>
         <attr sel="#vehicle-model" th:text="${booking.model}"/>
         <attr sel="#vehicle-customer" th:text="${booking.customer}"/>
-        <attr sel="#vehicle-status" th:text="${booking.status}"/>
+        <attr sel="#vehicle-status" th:text="${booking.status}" th:attr="color-id=${booking.status}"/>
         <attr sel="#service-advisor" th:text="Amanda"/>
     </attr>
     <attr sel="#registration" th:value="(${booking} ? ${booking.registration} : '')"/>
