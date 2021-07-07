@@ -10,11 +10,13 @@ expandButton.addEventListener("click", ()=>{
         edit.style.width = "80%";
         expandButton.setAttribute("data_expanded", true);
         newNoteContainer.style.display = "flex";
+        expandButton.textContent = ">"
     } else {
         table.style.display = "table";
         edit.style.width = "30%";
         expandButton.setAttribute("data_expanded", false);
         newNoteContainer.style.display = "none";
+        expandButton.textContent = "<"
     }
 
 })

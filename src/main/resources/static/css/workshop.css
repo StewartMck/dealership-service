@@ -49,10 +49,16 @@ body {
 }
 
 #expand {
-    color: red;
     border: none;
     background: transparent;
     text-align: left;
+    font-size: large;
+    padding-left: 0;
+}
+
+#expand:hover {
+    cursor: pointer;
+    font-size: x-large;
 }
 
 .buttons {
