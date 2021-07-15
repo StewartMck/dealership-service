@@ -10,7 +10,7 @@ public class User {
     private Long id;
     private String username;
     private String password;
-    private Set roles;
+    private Set<Role> roles;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,7 +42,7 @@ public class User {
     @JoinTable(name="user_role",
     joinColumns = @JoinColumn(name="user_id"),
     inverseJoinColumns = @JoinColumn(name="role_id"))
-    public Set getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
