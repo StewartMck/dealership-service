@@ -23,9 +23,10 @@ public class WebSocketController {
 
     @MessageMapping("/update")
     @SendTo("/status/update")
-    public String updateStatus(ServiceItem serviceItem) throws Exception {
+    public ServiceItem updateStatus(ServiceItem serviceItem) throws Exception {
         log.info("RUNNING UPDATE STATUS");
-        return "serviceItem;";
+        log.info("SENT ITEM {}", serviceItem);
+        return serviceItem;
     }
 
 }
