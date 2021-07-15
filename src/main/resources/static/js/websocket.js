@@ -6,11 +6,15 @@
         stompClient.subscribe('/status/update', function (update) {
         console.log('receiving')
             const data = JSON.parse(update.body)
+            if (!data.registration) {
+                return;
+            } else {
             const dataExists = checkData(data.registration);
             if (!dataExists) {
                 addData(data)
             } else {
                 updateData(dataExists, data)
+            }
             }
         });
     });
