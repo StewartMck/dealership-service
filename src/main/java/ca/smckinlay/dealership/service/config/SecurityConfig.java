@@ -8,10 +8,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private AuthenticationSuccessHandler authenticationSuccessHandler;
+
+    public SecurityConfig(AuthenticationSuccessHandler authenticationSuccessHandler) {
+        this.authenticationSuccessHandler = authenticationSuccessHandler;
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -20,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("workshop").password(passwordEncoder().encode("workshop")).roles("WORKSHOP")
                 .and()
-                .withUser("admin").password(passwordEncoder().encode("adminPass")).roles("ADMIN");
+                .withUser("manager").password(passwordEncoder().encode("manager")).roles("MANAGER");
     }
 
     @Bean
@@ -33,12 +40,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/service/**").hasRole("SERVICE")
-                    .antMatchers("/workshop/**").hasRole("WORKSHOP")
+                    .antMatchers("/service/**").hasAnyRole("SERVICE", "MANAGER")
+                    .antMatchers("/workshop/**").hasAnyRole("WORKSHOP", "MANAGER")
                     .antMatchers("/h2-console").permitAll()
                     .and()
                 .formLogin()
                     .loginPage("/login")
+                    .successHandler(authenticationSuccessHandler)
                     .permitAll()
                     .and()
                 .logout()

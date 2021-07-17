@@ -1,6 +1,9 @@
 package ca.smckinlay.dealership.service.models;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
+import java.util.Iterator;
 import java.util.Set;
 
 /*
@@ -13,6 +16,7 @@ import java.util.Set;
 public class User {
 
     @Id
+    @Column(name="USER_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -74,5 +78,16 @@ public class User {
 
     public void setRoles(Set roles) {
         this.roles = roles;
+    }
+
+    public boolean hasRole(String roleName) {
+        Iterator<Role> iterator = this.roles.iterator();
+        while(iterator.hasNext()) {
+            Role role = iterator.next();
+            if(role.getName().equals(roleName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
