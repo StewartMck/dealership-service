@@ -3,17 +3,47 @@ package ca.smckinlay.dealership.service.models;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
-@Table(name="user")
-public class User {
+/*
+    MANY-TO-MANY:
+    Include Collection in both classes which contains elements of the others.
+ */
 
-    private Long id;
-    private String username;
-    private String password;
-    private Set<Role> roles;
+@Entity
+@Table(name="USERS")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String username;
+    private String password;
+
+    /*
+        @JoinTable name = name of join table
+        Foreign keys from @JoinColumn
+        @JoinColumn = connect to owner side of relationship
+        @InverseJoinColumn = connect to other side
+     */
+
+    @ManyToMany
+    @JoinTable(
+            name="USER_ROLE",
+            joinColumns = @JoinColumn(name="USER_ID"),
+            inverseJoinColumns = @JoinColumn(name="ROLE_ID"))
+    private Set<Role> roles;
+
+    public User() {
+    }
+
+    public User(Long id, String username, String password, Set<Role> roles) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -38,10 +68,6 @@ public class User {
         this.password = password;
     }
 
-    @ManyToMany
-    @JoinTable(name="user_role",
-    joinColumns = @JoinColumn(name="user_id"),
-    inverseJoinColumns = @JoinColumn(name="role_id"))
     public Set<Role> getRoles() {
         return roles;
     }
