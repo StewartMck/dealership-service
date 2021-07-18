@@ -1,29 +1,23 @@
 package ca.smckinlay.dealership.service.models;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
-@Table(name="role")
-public class Role {
+@Table(name="Vehicles")
+public class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String name;
 
-    public Role() {
+    public Vehicle() {
     }
 
-    public Role(Long id, String name, Set<User> users) {
+    public Vehicle(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.users = users;
     }
-
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
 
     public Long getId() {
         return id;
@@ -41,11 +35,8 @@ public class Role {
         this.name = name;
     }
 
-    public Set getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set users) {
-        this.users = users;
+    @Override
+    public String toString() {
+        return name;
     }
 }

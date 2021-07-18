@@ -8,6 +8,7 @@ public final class AttributeNames {
     public static final String BOOKINGS = "bookings";
     public static final String BOOKING = "booking";
     public static final String VALIDATION_ERRORS = "errors";
+    public static final String VEHICLES = "vehicles";
 
     public AttributeNames() {
     }

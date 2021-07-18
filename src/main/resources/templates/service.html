@@ -44,7 +44,13 @@
       <input id="registration" name="registration" type="text" placeholder="Customer Vehicle Registration">
       <label for="model">Model</label>
       <label id="model-error" class="validation-error" for="model"/>
-      <input id="model" type="text" name="model" placeholder="Customer Vehicle Model"/>
+<!--      <input id="model" type="text" name="model" placeholder="Customer Vehicle Model">-->
+      <select name="model", id="model">
+        <option th:each="vehicle : ${vehicles}"
+                th:value="${vehicle}" th:text="${vehicle}"/>
+        <!--                    th:selected="${message}==(${booking} ? ${booking.status} : 'QUEUE')"-->
+      </select>
+      </input>
       <label for="customer">Customer Name</label>
       <label id="customer-error" class="validation-error" for="customer"/>
       <input id="customer" name="customer" type="text" placeholder="Customer Name">
