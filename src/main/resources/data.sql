@@ -25,3 +25,12 @@ VALUES('ralpwilliams', '1234');
 INSERT INTO USER_ROLE(USER_ID, ROLE_ID) values(1,1);
 INSERT INTO USER_ROLE(USER_ID, ROLE_ID) values(2,2);
 INSERT INTO USER_ROLE(USER_ID, ROLE_ID) values(3,3);
+
+
+INSERT INTO VEHICLES(NAME) values('Cherokee');
+INSERT INTO VEHICLES(NAME) values('Grand Cherokee');
+INSERT INTO VEHICLES(NAME) values('Compass');
+INSERT INTO VEHICLES(NAME) values('Renegade');
+INSERT INTO VEHICLES(NAME) values('Wrangler');
+INSERT INTO VEHICLES(NAME) values('Gladiator');
+INSERT INTO VEHICLES(NAME) values('Wagoneer');
