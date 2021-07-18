@@ -9,19 +9,22 @@ public class HTTPStatusErrorServiceImpl implements HTTPStatusErrorService {
     public String getHTTPStatusMsg(int statusCode) {
         switch (statusCode) {
             case 400: {
-                return "Http Error Code: 400. Bad Request";
+                return "There was a Bad Request";
             }
             case 401: {
-                return "Http Error Code: 401. Unauthorized";
+                return "You need to login to view this page";
+            }
+            case 403: {
+                return "You are not authorized to view this page";
             }
             case 404: {
-                return "Http Error Code: 404. Resource not found";
+                return "The Resource was not found";
             }
             case 500: {
-                return "Http Error Code: 500. Internal Server Error";
+                return "There was an Internal Server Error";
             }
             default:
-                return "An error occured!";
+                return "An error occurred!";
         }
     }
 }

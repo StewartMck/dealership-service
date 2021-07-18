@@ -22,3 +22,18 @@ img {
     height: auto;
     width: 300px;
 }
+
+#error-msg {
+    text-align:center;
+    font-size: larger;
+    padding: 0, 5px, 0, 5px;
+}
+
+#browser-back {
+    text-decoration: none;
+    color: black;
+    background: darkgrey;
+    border-radius: 2em;
+    padding: 5px;
+    margin-top: 2em;
+    font-weight: bold;
