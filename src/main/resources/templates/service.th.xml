@@ -9,7 +9,7 @@
         <attr sel="#service-advisor" th:text="Amanda"/>
     </attr>
     <attr sel="#registration" th:value="(${booking} ? ${booking.registration} : '')"/>
-    <attr sel="#model" th:value="(${booking} ? ${booking.model} : '')"/>
+<!--    <attr sel="#model" th:selected="(${booking} ? ${booking.model} : '')"/>-->
     <attr sel="#customer" th:value="(${booking} ? ${booking.customer} : '')"/>
     <attr sel="#concerns" th:text="(${booking} ? ${booking.concerns} : '')"/>
     <attr sel="#workshop" th:text="(${booking} ? ${booking.workshop} : '')"/>

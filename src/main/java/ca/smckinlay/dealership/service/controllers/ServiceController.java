@@ -51,6 +51,7 @@ public class ServiceController {
     @GetMapping(Mappings.SERVICE_ITEM)
     public String serviceItem(@RequestParam String id, Model model, RedirectAttributes redirectAttributes) {
         ServiceItem service = serviceModel.getBooking(id);
+        log.info("FOUND IN SERVICE_ITEM {}", service);
         redirectAttributes.addFlashAttribute(AttributeNames.BOOKING, service);
         return Mappings.REDIRECT_SERVICES;
     }

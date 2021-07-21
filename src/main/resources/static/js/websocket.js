@@ -39,13 +39,14 @@ function addData({registration, customer, model, status}) {
 
     const newRow = `<tr id="service-data">
                             <td id="vehicle-reg">
-                            <a id="vehicle-reg-href" href="/service/item?id=${registration}">${registration}</a>
+
                             </td>
                             <td id="vehicle-model">${model}</td>
                             <td id="vehicle-customer">${customer}</td>
                             <td id="vehicle-status" color-id=${status}>${status}</td>
                             <td id="service-advisor">Amanda</td>
                           </tr>`
+    $('#vehicle-reg').append(`<a id="vehicle-reg-href" href="/service/item?id=${registration}">${registration}</a>`)
     const table = document.getElementsByClassName("vehicles")[0];
     console.log($('.vehicles > tbody tr:last'))
     $('.vehicles > tbody').append(newRow)
